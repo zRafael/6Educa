@@ -54,9 +54,10 @@ public class UsuarioController {
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
-	@PutMapping
-	public ResponseEntity<Usuario> put (@RequestBody Usuario usuario){
-		return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
+	@PutMapping("/atualizar")
+	public ResponseEntity<Usuario> put (@Valid @RequestBody Usuario usuario){
+		usuario.setSenha(usuarioService.criptografarSenha(usuario.getSenha()));
+		return ResponseEntity.ok(usuarioRepository.save(usuario));
 	}
 	
 	@DeleteMapping("/{id}")
