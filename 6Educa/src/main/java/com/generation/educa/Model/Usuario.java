@@ -19,18 +19,18 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long id;
+	private Long id;
 	
 	@NotNull
-	public String nome;
+	private String nome;
 	
 	@NotNull
-	public String email_usuario;
+	private String email_usuario;
 	
-	public String foto;
+	private String foto;
 	
 	@NotNull
-	public String senha;
+	private String senha;
 	
 	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
 	@JsonIgnoreProperties ("usuario")
