@@ -83,7 +83,7 @@ public class Usuario {
 		return postagem;
 	}
 
-	public void setProduto(List<Postagem> postagem) {
+	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
 	
