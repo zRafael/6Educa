@@ -18,15 +18,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.educa.Model.Usuario;
-import com.generation.educa.Model.UsuarioLogin;
+import com.generation.educa.model.Usuario;
+import com.generation.educa.model.UsuarioLogin;
 import com.generation.educa.repository.UsuarioRepository;
 import com.generation.educa.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-
 public class UsuarioController {
 
 	@Autowired
@@ -37,7 +36,6 @@ public class UsuarioController {
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Usuario>> getAll() {
-
 		return ResponseEntity.ok(usuarioRepository.findAll());
 
 	}
@@ -54,16 +52,15 @@ public class UsuarioController {
 		return usuarioService.cadastraUsuario(usuario)
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
 				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
-
 	}
-
+	
 	@PutMapping
-	public ResponseEntity<Usuario> put(@Valid @RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> put (@RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuario));
 	}
-
+	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
+	public void delete(@PathVariable long id) {
 		usuarioRepository.deleteById(id);
 	}
 }

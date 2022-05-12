@@ -1,4 +1,4 @@
-package com.generation.educa.Model;
+package com.generation.educa.model;
 
 import java.util.List;
 
@@ -9,32 +9,35 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name="tb_usuario")
+@Table(name = "tb_usuarios")
 public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull
 	private String nome;
-	
+
 	@NotNull
-	private String email_usuario;
-	
-	private String foto;
-	
+	@Email(message = "O usuário deve ser um email valido")
+	private String usuario;
+
 	@NotNull
 	private String senha;
+
+	private String foto;
 	
-	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
-	@JsonIgnoreProperties ("usuario")
-	private List <Postagem> postagem;
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("usuario")
+	private List<Postagem> postagem;
+	
 
 	public Long getId() {
 		return id;
@@ -52,20 +55,12 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public String getEmail_usuario() {
-		return email_usuario;
+	public String getUsuario() {
+		return usuario;
 	}
 
-	public void setEmail_usuario(String email_usuario) {
-		this.email_usuario = email_usuario;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getSenha() {
@@ -76,12 +71,23 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public List<Postagem> getPostagem() {
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public List<Postagem> getProduto() {
 		return postagem;
 	}
 
-	public void setPostagem(List<Postagem> postagem) {
+	public void setProduto(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-
+	
+	
+	
+	
 }

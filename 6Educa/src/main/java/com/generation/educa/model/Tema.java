@@ -1,4 +1,4 @@
-package com.generation.educa.Model;
+package com.generation.educa.model;
 
 import java.util.List;
 

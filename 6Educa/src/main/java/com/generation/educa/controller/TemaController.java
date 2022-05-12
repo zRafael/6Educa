@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.educa.Model.Tema;
+import com.generation.educa.model.Tema;
 import com.generation.educa.repository.TemaRepository;
 
 @RestController

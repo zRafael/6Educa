@@ -1,17 +1,17 @@
-package com.generation.educa.Model;
+package com.generation.educa.model;
 
 public class UsuarioLogin {
 
 	private Long id;
-
+	
 	private String nome;
-
+	
 	private String usuario;
-
+	
 	private String senha;
-
+	
 	private String foto;
-
+	
 	private String token;
 
 	public Long getId() {
@@ -61,5 +61,5 @@ public class UsuarioLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-
+	
 }

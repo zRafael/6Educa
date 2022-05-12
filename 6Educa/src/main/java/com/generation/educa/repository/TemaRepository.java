@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.generation.educa.Model.Tema;
+import com.generation.educa.model.Tema;
 
 @Repository
 public interface TemaRepository extends JpaRepository<Tema, Long>{

@@ -1,4 +1,4 @@
-package com.generation.educa.Model;
+package com.generation.educa.model;
 
 import java.util.Date;
 
@@ -20,18 +20,26 @@ public class Postagem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long id;
+	private Long id;
 	
 	@NotNull
-	public String titulo;
+	private String titulo;
 	
 	@NotNull
-	public String descricao;
+	private String descricao;
 	
-	public String foto;
+	private String foto;
 	
 	@Temporal(TemporalType.TIMESTAMP)
     private Date data = new java.sql.Date(System.currentTimeMillis());
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
 
 	public Long getId() {
 		return id;
@@ -72,10 +80,6 @@ public class Postagem {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
-	@ManyToOne
-	@JsonIgnoreProperties("postagem")
-	private Tema tema;
 
 	public Tema getTema() {
 		return tema;
@@ -84,10 +88,6 @@ public class Postagem {
 	public void setTema(Tema tema) {
 		this.tema = tema;
 	}
-	
-	@ManyToOne
-	@JsonIgnoreProperties("postagem")
-	private Usuario usuario;
 
 	public Usuario getUsuario() {
 		return usuario;
