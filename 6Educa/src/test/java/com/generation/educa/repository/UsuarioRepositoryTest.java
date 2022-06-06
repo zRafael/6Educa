@@ -28,13 +28,13 @@ public class UsuarioRepositoryTest {
 	void start() {
 		
 		repository
-			.save(new Usuario(0L, "Marjory Matos", "marjory@test.com.br", "123456789", "https://google.com.br"));
+			.save(new Usuario(0L, "Marjory Matos", "marjory@test.com.br", "123456789", "https://google.com.br", "Quero ser aluno"));
 		repository
-			.save(new Usuario(0L, "Yhuri Gross", "yhuri@test.com.br", "123456789", "https://google.com.br"));
+			.save(new Usuario(0L, "Yhuri Gross", "yhuri@test.com.br", "123456789", "https://google.com.br", "Quero ser aluno"));
 		repository
-			.save(new Usuario(0L, "Simone Matos", "simone@test.com.br", "123456789", "https://google.com.br"));
+			.save(new Usuario(0L, "Simone Matos", "simone@test.com.br", "123456789", "https://google.com.br", "Quero ser aluno"));
 		repository
-			.save(new Usuario(0L, "Usuario Usuario", "usuario@test.com.br", "123456789", "https://google.com.br"));
+			.save(new Usuario(0L, "Usuario Usuario", "usuario@test.com.br", "123456789", "https://google.com.br", "Quero ser aluno"));
 	}
 	
 	@Test

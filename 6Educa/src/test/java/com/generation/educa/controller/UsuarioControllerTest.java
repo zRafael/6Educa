@@ -39,7 +39,7 @@ public class UsuarioControllerTest {
 	public void criarUmUsuario() {
 
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(
-				new Usuario(0L, "Lucas Silva", "lucas@gmail.com", "2020", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Lucas Silva", "lucas@gmail.com", "2020", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao,
 				Usuario.class);
@@ -56,10 +56,10 @@ public class UsuarioControllerTest {
 	public void naoDeveDuplicarUsuario() {
 
 		usuarioService.cadastraUsuario(
-				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(
-				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao,
 				Usuario.class);
@@ -74,10 +74,10 @@ public class UsuarioControllerTest {
 	public void deveAtualizarUmUsuario() {
 
 		Optional<Usuario> usuarioCreate = usuarioService.cadastraUsuario(
-				new Usuario(0L, "Fabiano", "fabiano@gmail.com", "3030", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Fabiano", "fabiano@gmail.com", "3030", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		Usuario usuarioUpdate = new Usuario(usuarioCreate.get().getId(), "Fabiano Oliveira", "fabiano@gmail.com",
-				"5050ola", "https://i.imgur.com/BA2hH3f.jpeg");
+				"5050ola", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno");
 
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(usuarioUpdate);
 
@@ -96,10 +96,10 @@ public class UsuarioControllerTest {
 	public void mostrarTodosUsuarios() {
 
 		usuarioService.cadastraUsuario(
-				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		usuarioService.cadastraUsuario(
-				new Usuario(0L, "Felipe", "felipe@gmail.com", "7070", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Felipe", "felipe@gmail.com", "7070", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root", "root").exchange("/usuarios/all",
 				HttpMethod.GET, null, String.class);
@@ -114,10 +114,10 @@ public class UsuarioControllerTest {
 	public void deletarUsuario() {
 
 		usuarioService.cadastraUsuario(
-				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Mariana", "mariana@gmail.com", "6060", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		usuarioService.cadastraUsuario(
-				new Usuario(0L, "Felipe", "felipe@gmail.com", "7070", "https://i.imgur.com/BA2hH3f.jpeg"));
+				new Usuario(0L, "Felipe", "felipe@gmail.com", "7070", "https://i.imgur.com/BA2hH3f.jpeg", "Quero ser aluno"));
 
 		ResponseEntity<String> resposta = testRestTemplate.withBasicAuth("root", "root").exchange("/usuarios/1",
 				HttpMethod.DELETE, null, String.class);
